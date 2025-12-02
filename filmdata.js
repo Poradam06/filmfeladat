@@ -22,9 +22,10 @@ window.onload = function() {
     const detailsDiv = document.getElementById('movieDetails');
     movies.forEach(movie => {
         const li = document.createElement('li');
-        li.textContent = movie.title;
         li.style.cursor = 'pointer';
-        li.style.padding = '8px 0';
+        li.style.padding = '8px 0 8px 8px';
+        
+        li.innerHTML = `<span style="color: #e2b007; font-size: 1.1em; margin-right: 8px;">&#9733;</span>${movie.title}`;
         li.addEventListener('click', function() {
             detailsDiv.innerHTML = `<h2>${movie.title}</h2>
                 <p><strong>Év:</strong> ${movie.year}</p>
