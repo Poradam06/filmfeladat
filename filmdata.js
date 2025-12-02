@@ -23,13 +23,22 @@ window.onload = function() {
     movies.forEach(movie => {
         const li = document.createElement('li');
         li.style.cursor = 'pointer';
+        li.style.display = 'flex';
+        li.style.justifyContent = 'space-between';
+        li.style.alignItems = 'center';
         li.style.padding = '8px 0 8px 8px';
-        
-        li.innerHTML = `<span style="color: #e2b007; font-size: 1.1em; margin-right: 8px;">&#9733;</span>${movie.title}`;
+        li.innerHTML = `<span>${movie.title}</span><span class="star" style="color: #aaa; font-size: 1.5em; margin-left: 12px; cursor:pointer;">*</span>`;
+        const star = li.querySelector('.star');
+        star.addEventListener('click', function(event) {
+            event.stopPropagation();
+            if (star.style.color === 'red') {
+                star.style.color = '#aaa';
+            } else {
+                star.style.color = 'red';
+            }
+        });
         li.addEventListener('click', function() {
-            detailsDiv.innerHTML = `<h2>${movie.title}</h2>
-                <p><strong>Év:</strong> ${movie.year}</p>
-                <p><strong>Műfaj:</strong> ${movie.genre}</p>`;
+            detailsDiv.innerHTML = `<h2>${movie.title}</h2>\n                <p><strong>Év:</strong> ${movie.year}</p>\n                <p><strong>Műfaj:</strong> ${movie.genre}</p>`;
         });
         list.appendChild(li);
     });
