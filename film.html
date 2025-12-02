@@ -8,10 +8,11 @@
 </head>
 <body>
     <h1>Filmek</h1>
-    <div id="container" style="display: flex; gap: 40px;">
-        <ul id="movieList" style="list-style: none; padding: 0; min-width: 200px;"></ul>
-        <div id="movieDetails"></div>
-    </div>
+    <label for="movieSelect">Válassz egy filmet:</label>
+    <select id="movieSelect">
+        <option value="">-- Válassz --</option>
+    </select>
+    <div id="movieDetails"></div>
     <script src="filmdata.js"></script>
 </body>
 </html>

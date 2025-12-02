@@ -18,18 +18,24 @@ const movies = [
 
 
 window.onload = function() {
-    const list = document.getElementById('movieList');
-    const detailsDiv = document.getElementById('movieDetails');
+    const select = document.getElementById('movieSelect');
     movies.forEach(movie => {
-        const li = document.createElement('li');
-        li.textContent = movie.title;
-        li.style.cursor = 'pointer';
-        li.style.padding = '8px 0';
-        li.addEventListener('click', function() {
+        const option = document.createElement('option');
+        option.value = movie.id;
+        option.textContent = movie.title;
+        select.appendChild(option);
+    });
+
+    select.addEventListener('change', function() {
+        const selectedId = parseInt(this.value);
+        const movie = movies.find(m => m.id === selectedId);
+        const detailsDiv = document.getElementById('movieDetails');
+        if (movie) {
             detailsDiv.innerHTML = `<h2>${movie.title}</h2>
                 <p><strong>Év:</strong> ${movie.year}</p>
                 <p><strong>Műfaj:</strong> ${movie.genre}</p>`;
-        });
-        list.appendChild(li);
+        } else {
+            detailsDiv.innerHTML = '';
+        }
     });
 };
